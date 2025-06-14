@@ -1,7 +1,15 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { ITodo } from "../types";
 
-export interface ITodoDocument extends ITodo, Document {}
+export interface ITodoDocument extends Document {
+  userId: string;
+  title: string;
+  description?: string;
+  dueDate: Date;
+  repeatType: "none" | "daily";
+  completed: boolean;
+  completedAt?: Date;
+  createdVia: "text" | "voice";
+}
 
 const todoSchema = new Schema<ITodoDocument>(
   {

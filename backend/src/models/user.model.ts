@@ -1,8 +1,14 @@
 import mongoose, { Schema, Document } from "mongoose";
 import bcrypt from "bcryptjs";
-import { IUser } from "../types";
 
-export interface IUserDocument extends IUser, Document {
+export interface IUserDocument extends Document {
+  email: string;
+  password: string;
+  preferences: {
+    theme: "light" | "dark";
+    defaultView: "today" | "all";
+  };
+  lastLogin: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
 }
 

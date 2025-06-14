@@ -1,6 +1,8 @@
 import { Request } from "express";
+import { Types } from "mongoose";
+
 export interface IUser {
-  _id: string;
+  _id?: string | Types.ObjectId;
   email: string;
   password: string;
   preferences: {
@@ -12,7 +14,7 @@ export interface IUser {
 }
 
 export interface ITodo {
-  _id: string;
+  _id?: string | Types.ObjectId;
   userId: string;
   title: string;
   description?: string;

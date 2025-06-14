@@ -1,3 +1,4 @@
+// src/routes/auth.routes.ts
 import { Router } from "express";
 import {
   register,
@@ -6,16 +7,26 @@ import {
   updatePreferences,
 } from "../controllers/auth.controller";
 import { protect } from "../middleware/auth.middleware";
+import { validateBody } from "../middleware/validation.middleware";
 import {
-  authValidation,
-  validateRequest,
-} from "../middleware/validation.middleware";
+  registerSchema,
+  loginSchema,
+  updatePreferencesSchema,
+} from "../schemas";
 
 const router = Router();
 
-router.post("/register", authValidation.register, validateRequest, register);
-router.post("/login", authValidation.login, validateRequest, login);
+// Public routes
+router.post("/register", validateBody(registerSchema), register);
+router.post("/login", validateBody(loginSchema), login);
+
+// Protected routes
 router.get("/me", protect, getMe);
-router.patch("/preferences", protect, updatePreferences);
+router.patch(
+  "/preferences",
+  protect,
+  validateBody(updatePreferencesSchema),
+  updatePreferences
+);
 
 export default router;

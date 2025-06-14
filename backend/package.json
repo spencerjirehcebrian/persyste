@@ -1,14 +1,15 @@
 {
   "name": "persyste-backend",
   "version": "1.0.0",
-  "description": "Minimalist Todo App Backend",
+  "description": "Todo app backend with TypeScript and MongoDB",
   "main": "dist/app.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/app.ts",
     "build": "tsc",
     "start": "node dist/app.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "test": "jest",
     "lint": "eslint src/**/*.ts",
-    "test": "jest"
+    "lint:fix": "eslint src/**/*.ts --fix"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -17,21 +18,36 @@
     "jsonwebtoken": "^9.0.2",
     "cors": "^2.8.5",
     "helmet": "^7.1.0",
-    "express-rate-limit": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
     "dotenv": "^16.3.1",
-    "express-validator": "^7.0.1"
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
-    "@types/node": "^20.8.0",
-    "@types/bcryptjs": "^2.4.5",
-    "@types/jsonwebtoken": "^9.0.4",
-    "@types/cors": "^2.8.15",
-    "typescript": "^5.2.2",
-    "ts-node": "^10.9.1",
-    "nodemon": "^3.0.1",
-    "@typescript-eslint/eslint-plugin": "^6.7.5",
-    "@typescript-eslint/parser": "^6.7.5",
-    "eslint": "^8.51.0"
-  }
+    "@types/node": "^20.10.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/cors": "^2.8.17",
+    "@types/jest": "^29.5.8",
+    "@types/multer": "^1.4.11",
+    "typescript": "^5.3.2",
+    "ts-node-dev": "^2.0.0",
+    "jest": "^29.7.0",
+    "eslint": "^8.55.0",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "typescript",
+    "mongodb",
+    "mongoose",
+    "todo",
+    "api"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }
